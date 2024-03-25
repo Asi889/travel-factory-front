@@ -1,5 +1,7 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
+import Menu from "./components/Menu";
+import { DataProvider } from "./context/DataProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -11,7 +13,15 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={`flex w-full bg-white`}>
+        <DataProvider>
+          <Menu />
+          <div className="w-full">
+
+            {children}
+          </div>
+        </DataProvider>
+      </body>
     </html>
   );
 }
